@@ -1,11 +1,18 @@
-import Home from "./pages/Home.jsx"
-import SignUp from "./pages/SignUp.jsx"
+
+import './App.css';
+import { AuthProvider } from './context/AuthContext';
+import { StorageProvider } from './context/StorageContext';
+import AppRoutes from './routes/AppRoutes';
+
 function App() {
-  <Home/>
-  return (
-    <>
-    <SignUp></SignUp>
-    </>
-  );
+	return (
+		<AuthProvider>
+			<StorageProvider>
+				<AppRoutes />
+			</StorageProvider>
+		</AuthProvider>
+	);
 }
-export default App
+
+export default App;
+
