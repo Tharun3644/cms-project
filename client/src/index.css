@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+:root {
+	box-sizing: border-box;
+	font-family: monospace;
+}
+
+body {
+	margin: 0;
+}
