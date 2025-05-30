@@ -1,7 +1,9 @@
+
 import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import { StorageProvider } from './context/StorageContext';
 import AppRoutes from './routes/AppRoutes';
+
 
 function App() {
 	return (
@@ -11,6 +13,7 @@ function App() {
 			</StorageProvider>
 		</AuthProvider>
 	);
+
 }
 
 export default App;
