@@ -10,13 +10,13 @@ import Counter from '../pages/dashboard/Counter';
 import Calculator from '../pages/dashboard/Calculator';
 import TodoList from '../pages/dashboard/TodoList';
 import Profile from '../pages/dashboard/Profile';
-import PrivateRoute from './PrivateRoute';
 import StopWatch from '../pages/dashboard/StopWatch';
 import UserStats from '../pages/CMS/UserStats';
 import AddNewItem from '../pages/CMS/AddNewItem';
 import DisplayAll from '../pages/CMS/DisplayAll';
 import MyFavorites from '../pages/CMS/MyFavorites';
 import MyItems from '../pages/CMS/MyItems';
+import PrivateRoute from './PrivateRoutes';
 
 export default function AppRoutes() {
 	return (

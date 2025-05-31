@@ -1,94 +1,91 @@
-import React, { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Link } from 'react-router';
+import AuthContext from '../context/AuthContext';
 
-const Login = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
-  const [error, setError] = useState('');
+export default function Login() {
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const { login } = useContext(AuthContext);
 
-  const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-    setError('');
-  };
+	function handleSubmit(event) {
+		event.preventDefault();
+		login(email, password);
+	}
 
-  const validate = () => {
-    if (!formData.username.trim()) {
-      setError('Please enter your username or email.');
-      return false;
-    }
-    if (!formData.password) {
-      setError('Please enter your password.');
-      return false;
-    }
-    if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters.');
-      return false;
-    }
-    return true;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      alert(`Welcome, ${formData.username}!`);
-      // TODO: Implement actual login logic
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 px-4">
-      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl shadow-lg max-w-md w-full p-8 text-white">
-        <h2 className="text-3xl font-semibold mb-6 text-center">Login</h2>
-        {error && (
-          <div
-            role="alert"
-            className="bg-red-600 bg-opacity-90 rounded-md p-3 mb-4 font-semibold"
-          >
-            {error}
-          </div>
-        )}
-        <form onSubmit={handleSubmit} noValidate className="space-y-6">
-          <input
-            type="text"
-            name="username"
-            placeholder="Username or Email"
-            value={formData.username}
-            onChange={handleChange}
-            autoComplete="username"
-            required
-            aria-required="true"
-            className="w-full px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            autoComplete="current-password"
-            required
-            aria-required="true"
-            minLength={6}
-            className="w-full px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <button
-            type="submit"
-            aria-label="Login to your account"
-            className="w-full py-3 bg-purple-700 hover:bg-purple-800 rounded-lg font-semibold shadow-md shadow-purple-700/60 transition-colors"
-          >
-            Login
-          </button>
-        </form>
-        <p className="mt-6 text-center text-white text-opacity-80">
-          Don&apos;t have an account?{' '}
-          <a href="#" tabIndex={0} className="underline hover:text-purple-200">
-            Sign up
-          </a>
-        </p>
-      </div>
-    </div>
-  );
-};
-
-export default Login;
+	return (
+		<div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200">
+			<div className="bg-white/90 p-10 rounded-2xl shadow-2xl w-full max-w-md border border-blue-100">
+				<form onSubmit={handleSubmit} className="space-y-6">
+					<div className="flex flex-col items-center mb-6">
+						<div className="bg-blue-500 rounded-full p-3 mb-2 shadow-lg">
+							<svg
+								className="w-8 h-8 text-white"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								viewBox="0 0 24 24"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M16 12A4 4 0 1 1 8 12a4 4 0 0 1 8 0zM12 14c-4.418 0-8 1.79-8 4v2h16v-2c0-2.21-3.582-4-8-4z"
+								/>
+							</svg>
+						</div>
+						<h2 className="text-3xl font-extrabold text-blue-700">Sign In</h2>
+						<p className="text-gray-500 mt-1 text-sm">
+							Welcome back! Please login to your account.
+						</p>
+					</div>
+					<div>
+						<label htmlFor="email" className="block text-gray-700 font-semibold mb-1">
+							Email
+						</label>
+						<input
+							id="email"
+							type="email"
+							name="username"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+							className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+							placeholder="Enter your email"
+							autoComplete="username"
+						/>
+					</div>
+					<div>
+						<label
+							htmlFor="password"
+							className="block text-gray-700 font-semibold mb-1"
+						>
+							Password
+						</label>
+						<input
+							id="password"
+							type="password"
+							name="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+							className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+							placeholder="Enter your password"
+							autoComplete="current-password"
+						/>
+					</div>
+					<button
+						type="submit"
+						className="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold shadow-md"
+					>
+						Login
+					</button>
+					<div className="text-center text-sm text-gray-500 mt-4">
+						Don't have an account?{' '}
+						<Link to="/sign-up" className="text-blue-600 hover:underline">
+							Sign up
+						</Link>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
+}
