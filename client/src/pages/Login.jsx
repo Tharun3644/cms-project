@@ -13,13 +13,13 @@ export default function Login() {
 	}
 
 	return (
-		<div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200">
-			<div className="bg-white/90 p-10 rounded-2xl shadow-2xl w-full max-w-md border border-blue-100">
-				<form onSubmit={handleSubmit} className="space-y-6">
-					<div className="flex flex-col items-center mb-6">
-						<div className="bg-blue-500 rounded-full p-3 mb-2 shadow-lg">
+		<div className="flex items-center justify-center min-h-screen bg-gradient-to-bl from-purple-100 via-white to-purple-200">
+			<div className="bg-white/80 p-8 rounded-lg shadow-md w-full max-w-lg border border-purple-100">
+				<form onSubmit={handleSubmit} className="space-y-4">
+					<div className="flex flex-col items-center mb-4">
+						<div className="bg-purple-600 rounded-full p-4 mb-3 shadow-md">
 							<svg
-								className="w-8 h-8 text-white"
+								className="w-10 h-10 text-white"
 								fill="none"
 								stroke="currentColor"
 								strokeWidth="2"
@@ -32,13 +32,13 @@ export default function Login() {
 								/>
 							</svg>
 						</div>
-						<h2 className="text-3xl font-extrabold text-blue-700">Sign In</h2>
-						<p className="text-gray-500 mt-1 text-sm">
+						<h2 className="text-4xl font-bold text-purple-700">Sign In</h2>
+						<p className="text-gray-600 mt-2 text-sm">
 							Welcome back! Please login to your account.
 						</p>
 					</div>
 					<div>
-						<label htmlFor="email" className="block text-gray-700 font-semibold mb-1">
+						<label htmlFor="email" className="block text-gray-800 font-medium mb-1">
 							Email
 						</label>
 						<input
@@ -48,7 +48,7 @@ export default function Login() {
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
-							className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+							className="w-full px-3 py-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
 							placeholder="Enter your email"
 							autoComplete="username"
 						/>
@@ -56,7 +56,7 @@ export default function Login() {
 					<div>
 						<label
 							htmlFor="password"
-							className="block text-gray-700 font-semibold mb-1"
+							className="block text-gray-800 font-medium mb-1"
 						>
 							Password
 						</label>
@@ -67,20 +67,20 @@ export default function Login() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
-							className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+							className="w-full px-3 py-2 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
 							placeholder="Enter your password"
 							autoComplete="current-password"
 						/>
 					</div>
 					<button
 						type="submit"
-						className="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold shadow-md"
+						className="w-full bg-purple-700 text-white py-2.5 rounded-lg hover:bg-purple-800 transition-colors font-semibold shadow-sm"
 					>
 						Login
 					</button>
-					<div className="text-center text-sm text-gray-500 mt-4">
+					<div className="text-center text-sm text-gray-600 mt-4">
 						Don't have an account?{' '}
-						<Link to="/sign-up" className="text-blue-600 hover:underline">
+						<Link to="/sign-up" className="text-purple-700 hover:underline">
 							Sign up
 						</Link>
 					</div>
